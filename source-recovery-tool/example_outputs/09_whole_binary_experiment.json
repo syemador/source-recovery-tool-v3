@@ -1,0 +1,475 @@
+{
+  "corpus": "/home/claude/source_recovery/experiments/../examples/zlib_full_corpus.json",
+  "binary": "/usr/lib/x86_64-linux-gnu/libz.so.1.2.11",
+  "total_functions": 25,
+  "distribution": {
+    "HIGH": 4,
+    "MEDIUM": 14,
+    "NONE": 4,
+    "LOW": 3
+  },
+  "reliably_matchable_pct": 72.0,
+  "functions": [
+    {
+      "name": "adler32",
+      "address": "0x00003fa0",
+      "size": 312,
+      "n_raw_constants": 4,
+      "n_rare_constants": 2,
+      "n_strings": 2,
+      "n_unique_strings": 2,
+      "n_external_calls": 0,
+      "n_queries": 10,
+      "tier": "HIGH",
+      "top_search_terms": [
+        "incorrect length check",
+        "incorrect data check",
+        "0xfff1",
+        "0x15b0"
+      ],
+      "top_queries": [
+        "0xfff1 \"incorrect length check\"",
+        "0xfff1 \"incorrect data check\"",
+        "0x15b0 \"incorrect length check\""
+      ]
+    },
+    {
+      "name": "crc32",
+      "address": "0x00004200",
+      "size": 458,
+      "n_raw_constants": 3,
+      "n_rare_constants": 1,
+      "n_strings": 0,
+      "n_unique_strings": 0,
+      "n_external_calls": 0,
+      "n_queries": 1,
+      "tier": "MEDIUM",
+      "top_search_terms": [
+        "0xedb88320"
+      ],
+      "top_queries": [
+        "0xedb88320"
+      ]
+    },
+    {
+      "name": "inflate",
+      "address": "0x00004800",
+      "size": 3200,
+      "n_raw_constants": 3,
+      "n_rare_constants": 1,
+      "n_strings": 10,
+      "n_unique_strings": 10,
+      "n_external_calls": 0,
+      "n_queries": 7,
+      "tier": "HIGH",
+      "top_search_terms": [
+        "invalid literal/length code",
+        "invalid literal/lengths set",
+        "invalid stored block lengths",
+        "invalid distance too far back"
+      ],
+      "top_queries": [
+        "0x5a0 \"invalid literal/length code\"",
+        "0x5a0 \"invalid literal/lengths set\"",
+        "\"invalid literal/length code\""
+      ]
+    },
+    {
+      "name": "inflate_fast",
+      "address": "0x00005c00",
+      "size": 1850,
+      "n_raw_constants": 3,
+      "n_rare_constants": 1,
+      "n_strings": 3,
+      "n_unique_strings": 3,
+      "n_external_calls": 0,
+      "n_queries": 7,
+      "tier": "HIGH",
+      "top_search_terms": [
+        "invalid literal/length code",
+        "invalid distance too far back",
+        "invalid distance code",
+        "0x102"
+      ],
+      "top_queries": [
+        "0x102 \"invalid literal/length code\"",
+        "0x102 \"invalid distance too far back\"",
+        "\"invalid literal/length code\""
+      ]
+    },
+    {
+      "name": "deflate",
+      "address": "0x00006400",
+      "size": 2100,
+      "n_raw_constants": 2,
+      "n_rare_constants": 1,
+      "n_strings": 0,
+      "n_unique_strings": 0,
+      "n_external_calls": 0,
+      "n_queries": 1,
+      "tier": "MEDIUM",
+      "top_search_terms": [
+        "0x102"
+      ],
+      "top_queries": [
+        "0x102"
+      ]
+    },
+    {
+      "name": "deflateInit2_",
+      "address": "0x00007200",
+      "size": 780,
+      "n_raw_constants": 3,
+      "n_rare_constants": 0,
+      "n_strings": 1,
+      "n_unique_strings": 1,
+      "n_external_calls": 0,
+      "n_queries": 1,
+      "tier": "MEDIUM",
+      "top_search_terms": [
+        "1.2.11"
+      ],
+      "top_queries": [
+        "\"1.2.11\""
+      ]
+    },
+    {
+      "name": "compress2",
+      "address": "0x00007800",
+      "size": 210,
+      "n_raw_constants": 1,
+      "n_rare_constants": 0,
+      "n_strings": 0,
+      "n_unique_strings": 0,
+      "n_external_calls": 0,
+      "n_queries": 0,
+      "tier": "NONE",
+      "top_search_terms": [],
+      "top_queries": []
+    },
+    {
+      "name": "uncompress",
+      "address": "0x00007a00",
+      "size": 240,
+      "n_raw_constants": 0,
+      "n_rare_constants": 0,
+      "n_strings": 0,
+      "n_unique_strings": 0,
+      "n_external_calls": 0,
+      "n_queries": 0,
+      "tier": "NONE",
+      "top_search_terms": [],
+      "top_queries": []
+    },
+    {
+      "name": "inflateInit2_",
+      "address": "0x00008000",
+      "size": 620,
+      "n_raw_constants": 2,
+      "n_rare_constants": 0,
+      "n_strings": 1,
+      "n_unique_strings": 1,
+      "n_external_calls": 0,
+      "n_queries": 1,
+      "tier": "MEDIUM",
+      "top_search_terms": [
+        "1.2.11"
+      ],
+      "top_queries": [
+        "\"1.2.11\""
+      ]
+    },
+    {
+      "name": "inflateEnd",
+      "address": "0x00008600",
+      "size": 120,
+      "n_raw_constants": 0,
+      "n_rare_constants": 0,
+      "n_strings": 0,
+      "n_unique_strings": 0,
+      "n_external_calls": 0,
+      "n_queries": 0,
+      "tier": "NONE",
+      "top_search_terms": [],
+      "top_queries": []
+    },
+    {
+      "name": "gzopen",
+      "address": "0x00008800",
+      "size": 180,
+      "n_raw_constants": 1,
+      "n_rare_constants": 0,
+      "n_strings": 1,
+      "n_unique_strings": 1,
+      "n_external_calls": 0,
+      "n_queries": 1,
+      "tier": "MEDIUM",
+      "top_search_terms": [
+        "1.2.11"
+      ],
+      "top_queries": [
+        "\"1.2.11\""
+      ]
+    },
+    {
+      "name": "gz_open",
+      "address": "0x00008900",
+      "size": 540,
+      "n_raw_constants": 2,
+      "n_rare_constants": 0,
+      "n_strings": 1,
+      "n_unique_strings": 1,
+      "n_external_calls": 3,
+      "n_queries": 3,
+      "tier": "MEDIUM",
+      "top_search_terms": [
+        "out of memory",
+        "strcpy",
+        "malloc",
+        "free"
+      ],
+      "top_queries": [
+        "\"out of memory\" \"strcpy\"",
+        "\"out of memory\" \"malloc\"",
+        "\"out of memory\""
+      ]
+    },
+    {
+      "name": "gzread",
+      "address": "0x00008f00",
+      "size": 320,
+      "n_raw_constants": 1,
+      "n_rare_constants": 0,
+      "n_strings": 1,
+      "n_unique_strings": 1,
+      "n_external_calls": 0,
+      "n_queries": 1,
+      "tier": "MEDIUM",
+      "top_search_terms": [
+        "requested length does not fit in int"
+      ],
+      "top_queries": [
+        "\"requested length does not fit in int\""
+      ]
+    },
+    {
+      "name": "gz_read",
+      "address": "0x00009100",
+      "size": 680,
+      "n_raw_constants": 2,
+      "n_rare_constants": 0,
+      "n_strings": 1,
+      "n_unique_strings": 1,
+      "n_external_calls": 1,
+      "n_queries": 2,
+      "tier": "MEDIUM",
+      "top_search_terms": [
+        "internal error: inflate stream corrupt",
+        "memcpy"
+      ],
+      "top_queries": [
+        "\"internal error: inflate stream corrupt\" \"memcpy\"",
+        "\"internal error: inflate stream corrupt\""
+      ]
+    },
+    {
+      "name": "gzwrite",
+      "address": "0x00009800",
+      "size": 280,
+      "n_raw_constants": 1,
+      "n_rare_constants": 0,
+      "n_strings": 1,
+      "n_unique_strings": 1,
+      "n_external_calls": 0,
+      "n_queries": 1,
+      "tier": "MEDIUM",
+      "top_search_terms": [
+        "requested length does not fit in int"
+      ],
+      "top_queries": [
+        "\"requested length does not fit in int\""
+      ]
+    },
+    {
+      "name": "gz_write",
+      "address": "0x00009a00",
+      "size": 520,
+      "n_raw_constants": 1,
+      "n_rare_constants": 0,
+      "n_strings": 0,
+      "n_unique_strings": 0,
+      "n_external_calls": 1,
+      "n_queries": 1,
+      "tier": "LOW",
+      "top_search_terms": [
+        "memcpy"
+      ],
+      "top_queries": [
+        "\"memcpy\""
+      ]
+    },
+    {
+      "name": "inflate_table",
+      "address": "0x0000a500",
+      "size": 1450,
+      "n_raw_constants": 4,
+      "n_rare_constants": 1,
+      "n_strings": 0,
+      "n_unique_strings": 0,
+      "n_external_calls": 0,
+      "n_queries": 1,
+      "tier": "MEDIUM",
+      "top_search_terms": [
+        "0x102"
+      ],
+      "top_queries": [
+        "0x102"
+      ]
+    },
+    {
+      "name": "_tr_init",
+      "address": "0x0000b000",
+      "size": 220,
+      "n_raw_constants": 3,
+      "n_rare_constants": 1,
+      "n_strings": 0,
+      "n_unique_strings": 0,
+      "n_external_calls": 0,
+      "n_queries": 1,
+      "tier": "MEDIUM",
+      "top_search_terms": [
+        "0x11e"
+      ],
+      "top_queries": [
+        "0x11e"
+      ]
+    },
+    {
+      "name": "adler32_combine_",
+      "address": "0x0000b800",
+      "size": 180,
+      "n_raw_constants": 1,
+      "n_rare_constants": 1,
+      "n_strings": 0,
+      "n_unique_strings": 0,
+      "n_external_calls": 0,
+      "n_queries": 1,
+      "tier": "MEDIUM",
+      "top_search_terms": [
+        "0xfff1"
+      ],
+      "top_queries": [
+        "0xfff1"
+      ]
+    },
+    {
+      "name": "crc32_combine_",
+      "address": "0x0000ba00",
+      "size": 240,
+      "n_raw_constants": 1,
+      "n_rare_constants": 1,
+      "n_strings": 0,
+      "n_unique_strings": 0,
+      "n_external_calls": 0,
+      "n_queries": 1,
+      "tier": "MEDIUM",
+      "top_search_terms": [
+        "0xedb88320"
+      ],
+      "top_queries": [
+        "0xedb88320"
+      ]
+    },
+    {
+      "name": "gf2_matrix_times",
+      "address": "0x0000bc00",
+      "size": 120,
+      "n_raw_constants": 1,
+      "n_rare_constants": 0,
+      "n_strings": 0,
+      "n_unique_strings": 0,
+      "n_external_calls": 0,
+      "n_queries": 0,
+      "tier": "NONE",
+      "top_search_terms": [],
+      "top_queries": []
+    },
+    {
+      "name": "zcalloc",
+      "address": "0x0000c000",
+      "size": 80,
+      "n_raw_constants": 0,
+      "n_rare_constants": 0,
+      "n_strings": 0,
+      "n_unique_strings": 0,
+      "n_external_calls": 1,
+      "n_queries": 1,
+      "tier": "LOW",
+      "top_search_terms": [
+        "calloc"
+      ],
+      "top_queries": [
+        "\"calloc\""
+      ]
+    },
+    {
+      "name": "zcfree",
+      "address": "0x0000c100",
+      "size": 40,
+      "n_raw_constants": 0,
+      "n_rare_constants": 0,
+      "n_strings": 0,
+      "n_unique_strings": 0,
+      "n_external_calls": 1,
+      "n_queries": 1,
+      "tier": "LOW",
+      "top_search_terms": [
+        "free"
+      ],
+      "top_queries": [
+        "\"free\""
+      ]
+    },
+    {
+      "name": "zlibVersion",
+      "address": "0x0000c200",
+      "size": 24,
+      "n_raw_constants": 0,
+      "n_rare_constants": 0,
+      "n_strings": 1,
+      "n_unique_strings": 1,
+      "n_external_calls": 0,
+      "n_queries": 1,
+      "tier": "MEDIUM",
+      "top_search_terms": [
+        "1.2.11"
+      ],
+      "top_queries": [
+        "\"1.2.11\""
+      ]
+    },
+    {
+      "name": "zError",
+      "address": "0x0000c300",
+      "size": 48,
+      "n_raw_constants": 0,
+      "n_rare_constants": 0,
+      "n_strings": 8,
+      "n_unique_strings": 8,
+      "n_external_calls": 0,
+      "n_queries": 4,
+      "tier": "HIGH",
+      "top_search_terms": [
+        "stream error",
+        "buffer error",
+        "file error",
+        "data error"
+      ],
+      "top_queries": [
+        "\"stream error\"",
+        "\"buffer error\"",
+        "\"file error\""
+      ]
+    }
+  ]
+}

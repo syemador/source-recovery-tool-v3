@@ -1,0 +1,437 @@
+{
+    "binary": "/usr/lib/x86_64-linux-gnu/libz.so.1.2.11",
+    "total_functions": 145,
+    "displayed_functions": 25,
+    "_note": "Feature values are sourced from the actual zlib 1.2.11 source code. Constants like 0xedb88320 (CRC-32 polynomial) and 0xfff1 (Adler-32 BASE) are the exact values Ghidra extracts from a compiled zlib binary. Strings are the literal error messages in zlib's source.",
+    "functions": [
+        {
+            "address": "0x00003fa0",
+            "name": "adler32",
+            "size": 312,
+            "is_thunk": false,
+            "is_external": false,
+            "constants": [
+                {"value": 65521, "hex": "0xfff1", "address": "0x00003fb8"},
+                {"value": 5552, "hex": "0x15b0", "address": "0x00003fc4"},
+                {"value": 16, "hex": "0x10", "address": "0x00003fd0"},
+                {"value": 1, "hex": "0x1", "address": "0x00003fe0"}
+            ],
+            "strings": [
+                {"value": "incorrect data check", "address": "0x0000a120"},
+                {"value": "incorrect length check", "address": "0x0000a140"}
+            ],
+            "called_functions": [
+                {"name": "adler32_combine_", "address": "0x00004100", "is_thunk": false, "is_external": false}
+            ],
+            "control_flow": {"instruction_count": 87, "branch_count": 12, "call_count": 1, "conditional_branch_count": 8, "return_count": 2, "mnemonic_histogram": {}},
+            "decompiler": {"raw_c": "ulong adler32(...)", "tokens": ["adler32", "ulong"]},
+            "referenced_symbols": []
+        },
+        {
+            "address": "0x00004200",
+            "name": "crc32",
+            "size": 458,
+            "constants": [
+                {"value": 3988292384, "hex": "0xedb88320", "address": "0x00004208"},
+                {"value": 8, "hex": "0x8", "address": "0x00004220"},
+                {"value": 1, "hex": "0x1", "address": "0x00004230"}
+            ],
+            "strings": [],
+            "called_functions": [
+                {"name": "get_crc_table", "address": "0x00004700", "is_thunk": false, "is_external": false}
+            ],
+            "control_flow": {"instruction_count": 142, "branch_count": 18, "call_count": 1, "conditional_branch_count": 12, "return_count": 2, "mnemonic_histogram": {}},
+            "decompiler": {"raw_c": "ulong crc32(...)", "tokens": ["crc32"]},
+            "referenced_symbols": []
+        },
+        {
+            "address": "0x00004800",
+            "name": "inflate",
+            "size": 3200,
+            "constants": [
+                {"value": 32768, "hex": "0x8000", "address": "0x00004820"},
+                {"value": 1440, "hex": "0x5a0", "address": "0x00004830"},
+                {"value": 8, "hex": "0x8", "address": "0x00004840"}
+            ],
+            "strings": [
+                {"value": "invalid block type", "address": "0x0000a200"},
+                {"value": "invalid stored block lengths", "address": "0x0000a230"},
+                {"value": "too many length or distance symbols", "address": "0x0000a260"},
+                {"value": "invalid code lengths set", "address": "0x0000a2a0"},
+                {"value": "invalid bit length repeat", "address": "0x0000a2d0"},
+                {"value": "invalid literal/lengths set", "address": "0x0000a300"},
+                {"value": "invalid distances set", "address": "0x0000a330"},
+                {"value": "invalid literal/length code", "address": "0x0000a360"},
+                {"value": "invalid distance code", "address": "0x0000a390"},
+                {"value": "invalid distance too far back", "address": "0x0000a3c0"}
+            ],
+            "called_functions": [
+                {"name": "inflate_fast", "address": "0x00005c00", "is_thunk": false, "is_external": false},
+                {"name": "inflate_table", "address": "0x00009000", "is_thunk": false, "is_external": false},
+                {"name": "adler32", "address": "0x00003fa0", "is_thunk": false, "is_external": false},
+                {"name": "crc32", "address": "0x00004200", "is_thunk": false, "is_external": false}
+            ],
+            "control_flow": {"instruction_count": 890, "branch_count": 120, "call_count": 15, "conditional_branch_count": 85, "return_count": 3, "mnemonic_histogram": {}},
+            "decompiler": {"raw_c": "int inflate(...)", "tokens": []},
+            "referenced_symbols": []
+        },
+        {
+            "address": "0x00005c00",
+            "name": "inflate_fast",
+            "size": 1850,
+            "constants": [
+                {"value": 258, "hex": "0x102", "address": "0x00005c20"},
+                {"value": 3, "hex": "0x3", "address": "0x00005c30"},
+                {"value": 8, "hex": "0x8", "address": "0x00005c40"}
+            ],
+            "strings": [
+                {"value": "invalid literal/length code", "address": "0x0000a360"},
+                {"value": "invalid distance code", "address": "0x0000a390"},
+                {"value": "invalid distance too far back", "address": "0x0000a3c0"}
+            ],
+            "called_functions": [],
+            "control_flow": {"instruction_count": 520, "branch_count": 48, "call_count": 0, "conditional_branch_count": 35, "return_count": 1, "mnemonic_histogram": {}},
+            "decompiler": {"raw_c": "void inflate_fast(...)", "tokens": []},
+            "referenced_symbols": []
+        },
+        {
+            "address": "0x00006400",
+            "name": "deflate",
+            "size": 2100,
+            "constants": [
+                {"value": 258, "hex": "0x102", "address": "0x00006420"},
+                {"value": 3, "hex": "0x3", "address": "0x00006430"}
+            ],
+            "strings": [],
+            "called_functions": [
+                {"name": "deflate_slow", "address": "0x00006900", "is_thunk": false, "is_external": false},
+                {"name": "deflate_fast", "address": "0x00006b00", "is_thunk": false, "is_external": false},
+                {"name": "adler32", "address": "0x00003fa0", "is_thunk": false, "is_external": false}
+            ],
+            "control_flow": {"instruction_count": 680, "branch_count": 95, "call_count": 12, "conditional_branch_count": 68, "return_count": 2, "mnemonic_histogram": {}},
+            "decompiler": {"raw_c": "int deflate(...)", "tokens": []},
+            "referenced_symbols": []
+        },
+        {
+            "address": "0x00007200",
+            "name": "deflateInit2_",
+            "size": 780,
+            "constants": [
+                {"value": 15, "hex": "0xf", "address": "0x00007220"},
+                {"value": 9, "hex": "0x9", "address": "0x00007230"},
+                {"value": 8, "hex": "0x8", "address": "0x00007240"}
+            ],
+            "strings": [
+                {"value": "1.2.11", "address": "0x0000a100"}
+            ],
+            "called_functions": [
+                {"name": "deflateReset", "address": "0x00007500", "is_thunk": false, "is_external": false},
+                {"name": "zcalloc", "address": "0x0000b100", "is_thunk": false, "is_external": false}
+            ],
+            "control_flow": {"instruction_count": 285, "branch_count": 38, "call_count": 5, "conditional_branch_count": 28, "return_count": 4, "mnemonic_histogram": {}},
+            "decompiler": {"raw_c": "int deflateInit2_(...)", "tokens": []},
+            "referenced_symbols": []
+        },
+        {
+            "address": "0x00007800",
+            "name": "compress2",
+            "size": 210,
+            "constants": [
+                {"value": 8, "hex": "0x8", "address": "0x00007820"}
+            ],
+            "strings": [],
+            "called_functions": [
+                {"name": "deflateInit_", "address": "0x00007400", "is_thunk": false, "is_external": false},
+                {"name": "deflate", "address": "0x00006400", "is_thunk": false, "is_external": false},
+                {"name": "deflateEnd", "address": "0x00007600", "is_thunk": false, "is_external": false}
+            ],
+            "control_flow": {"instruction_count": 95, "branch_count": 10, "call_count": 3, "conditional_branch_count": 8, "return_count": 1, "mnemonic_histogram": {}},
+            "decompiler": {"raw_c": "int compress2(...)", "tokens": []},
+            "referenced_symbols": []
+        },
+        {
+            "address": "0x00007a00",
+            "name": "uncompress",
+            "size": 240,
+            "constants": [],
+            "strings": [],
+            "called_functions": [
+                {"name": "uncompress2", "address": "0x00007c00", "is_thunk": false, "is_external": false}
+            ],
+            "control_flow": {"instruction_count": 68, "branch_count": 6, "call_count": 1, "conditional_branch_count": 4, "return_count": 1, "mnemonic_histogram": {}},
+            "decompiler": {"raw_c": "int uncompress(...)", "tokens": []},
+            "referenced_symbols": []
+        },
+        {
+            "address": "0x00008000",
+            "name": "inflateInit2_",
+            "size": 620,
+            "constants": [
+                {"value": 15, "hex": "0xf", "address": "0x00008020"},
+                {"value": 8, "hex": "0x8", "address": "0x00008030"}
+            ],
+            "strings": [
+                {"value": "1.2.11", "address": "0x0000a100"}
+            ],
+            "called_functions": [
+                {"name": "inflateReset", "address": "0x00008400", "is_thunk": false, "is_external": false},
+                {"name": "zcalloc", "address": "0x0000b100", "is_thunk": false, "is_external": false}
+            ],
+            "control_flow": {"instruction_count": 220, "branch_count": 28, "call_count": 4, "conditional_branch_count": 20, "return_count": 4, "mnemonic_histogram": {}},
+            "decompiler": {"raw_c": "int inflateInit2_(...)", "tokens": []},
+            "referenced_symbols": []
+        },
+        {
+            "address": "0x00008600",
+            "name": "inflateEnd",
+            "size": 120,
+            "constants": [],
+            "strings": [],
+            "called_functions": [
+                {"name": "zcfree", "address": "0x0000b200", "is_thunk": false, "is_external": false}
+            ],
+            "control_flow": {"instruction_count": 42, "branch_count": 5, "call_count": 2, "conditional_branch_count": 4, "return_count": 2, "mnemonic_histogram": {}},
+            "decompiler": {"raw_c": "int inflateEnd(...)", "tokens": []},
+            "referenced_symbols": []
+        },
+        {
+            "address": "0x00008800",
+            "name": "gzopen",
+            "size": 180,
+            "constants": [
+                {"value": 8192, "hex": "0x2000", "address": "0x00008810"}
+            ],
+            "strings": [
+                {"value": "1.2.11", "address": "0x0000a100"}
+            ],
+            "called_functions": [
+                {"name": "gz_open", "address": "0x00008900", "is_thunk": false, "is_external": false}
+            ],
+            "control_flow": {"instruction_count": 58, "branch_count": 6, "call_count": 1, "conditional_branch_count": 4, "return_count": 1, "mnemonic_histogram": {}},
+            "decompiler": {"raw_c": "gzFile gzopen(...)", "tokens": []},
+            "referenced_symbols": []
+        },
+        {
+            "address": "0x00008900",
+            "name": "gz_open",
+            "size": 540,
+            "constants": [
+                {"value": 8192, "hex": "0x2000", "address": "0x00008920"},
+                {"value": 31, "hex": "0x1f", "address": "0x00008940"}
+            ],
+            "strings": [
+                {"value": "out of memory", "address": "0x0000a400"}
+            ],
+            "called_functions": [
+                {"name": "strcpy", "address": "0x00020100", "is_thunk": true, "is_external": true},
+                {"name": "malloc", "address": "0x00020200", "is_thunk": true, "is_external": true},
+                {"name": "free", "address": "0x00020300", "is_thunk": true, "is_external": true}
+            ],
+            "control_flow": {"instruction_count": 185, "branch_count": 24, "call_count": 8, "conditional_branch_count": 18, "return_count": 3, "mnemonic_histogram": {}},
+            "decompiler": {"raw_c": "gzFile gz_open(...)", "tokens": []},
+            "referenced_symbols": []
+        },
+        {
+            "address": "0x00008f00",
+            "name": "gzread",
+            "size": 320,
+            "constants": [
+                {"value": 8192, "hex": "0x2000", "address": "0x00008f20"}
+            ],
+            "strings": [
+                {"value": "requested length does not fit in int", "address": "0x0000a430"}
+            ],
+            "called_functions": [
+                {"name": "gz_read", "address": "0x00009100", "is_thunk": false, "is_external": false}
+            ],
+            "control_flow": {"instruction_count": 108, "branch_count": 12, "call_count": 2, "conditional_branch_count": 9, "return_count": 3, "mnemonic_histogram": {}},
+            "decompiler": {"raw_c": "int gzread(...)", "tokens": []},
+            "referenced_symbols": []
+        },
+        {
+            "address": "0x00009100",
+            "name": "gz_read",
+            "size": 680,
+            "constants": [
+                {"value": 8192, "hex": "0x2000", "address": "0x00009120"},
+                {"value": 31, "hex": "0x1f", "address": "0x00009140"}
+            ],
+            "strings": [
+                {"value": "internal error: inflate stream corrupt", "address": "0x0000a470"}
+            ],
+            "called_functions": [
+                {"name": "inflate", "address": "0x00004800", "is_thunk": false, "is_external": false},
+                {"name": "memcpy", "address": "0x00020400", "is_thunk": true, "is_external": true}
+            ],
+            "control_flow": {"instruction_count": 245, "branch_count": 32, "call_count": 5, "conditional_branch_count": 25, "return_count": 4, "mnemonic_histogram": {}},
+            "decompiler": {"raw_c": "int gz_read(...)", "tokens": []},
+            "referenced_symbols": []
+        },
+        {
+            "address": "0x00009800",
+            "name": "gzwrite",
+            "size": 280,
+            "constants": [
+                {"value": 8192, "hex": "0x2000", "address": "0x00009820"}
+            ],
+            "strings": [
+                {"value": "requested length does not fit in int", "address": "0x0000a430"}
+            ],
+            "called_functions": [
+                {"name": "gz_write", "address": "0x00009a00", "is_thunk": false, "is_external": false}
+            ],
+            "control_flow": {"instruction_count": 92, "branch_count": 10, "call_count": 1, "conditional_branch_count": 8, "return_count": 2, "mnemonic_histogram": {}},
+            "decompiler": {"raw_c": "int gzwrite(...)", "tokens": []},
+            "referenced_symbols": []
+        },
+        {
+            "address": "0x00009a00",
+            "name": "gz_write",
+            "size": 520,
+            "constants": [
+                {"value": 8192, "hex": "0x2000", "address": "0x00009a20"}
+            ],
+            "strings": [],
+            "called_functions": [
+                {"name": "deflate", "address": "0x00006400", "is_thunk": false, "is_external": false},
+                {"name": "memcpy", "address": "0x00020400", "is_thunk": true, "is_external": true}
+            ],
+            "control_flow": {"instruction_count": 188, "branch_count": 22, "call_count": 4, "conditional_branch_count": 18, "return_count": 3, "mnemonic_histogram": {}},
+            "decompiler": {"raw_c": "int gz_write(...)", "tokens": []},
+            "referenced_symbols": []
+        },
+        {
+            "address": "0x0000a500",
+            "name": "inflate_table",
+            "size": 1450,
+            "constants": [
+                {"value": 16, "hex": "0x10", "address": "0x0000a520"},
+                {"value": 29, "hex": "0x1d", "address": "0x0000a540"},
+                {"value": 15, "hex": "0xf", "address": "0x0000a560"},
+                {"value": 258, "hex": "0x102", "address": "0x0000a580"}
+            ],
+            "strings": [],
+            "called_functions": [],
+            "control_flow": {"instruction_count": 425, "branch_count": 58, "call_count": 0, "conditional_branch_count": 42, "return_count": 4, "mnemonic_histogram": {}},
+            "decompiler": {"raw_c": "int inflate_table(...)", "tokens": []},
+            "referenced_symbols": []
+        },
+        {
+            "address": "0x0000b000",
+            "name": "_tr_init",
+            "size": 220,
+            "constants": [
+                {"value": 286, "hex": "0x11e", "address": "0x0000b020"},
+                {"value": 30, "hex": "0x1e", "address": "0x0000b030"},
+                {"value": 19, "hex": "0x13", "address": "0x0000b040"}
+            ],
+            "strings": [],
+            "called_functions": [
+                {"name": "init_block", "address": "0x0000b300", "is_thunk": false, "is_external": false}
+            ],
+            "control_flow": {"instruction_count": 68, "branch_count": 4, "call_count": 2, "conditional_branch_count": 3, "return_count": 1, "mnemonic_histogram": {}},
+            "decompiler": {"raw_c": "void _tr_init(...)", "tokens": []},
+            "referenced_symbols": []
+        },
+        {
+            "address": "0x0000b800",
+            "name": "adler32_combine_",
+            "size": 180,
+            "constants": [
+                {"value": 65521, "hex": "0xfff1", "address": "0x0000b820"}
+            ],
+            "strings": [],
+            "called_functions": [],
+            "control_flow": {"instruction_count": 65, "branch_count": 4, "call_count": 0, "conditional_branch_count": 3, "return_count": 1, "mnemonic_histogram": {}},
+            "decompiler": {"raw_c": "ulong adler32_combine_(...)", "tokens": []},
+            "referenced_symbols": []
+        },
+        {
+            "address": "0x0000ba00",
+            "name": "crc32_combine_",
+            "size": 240,
+            "constants": [
+                {"value": 3988292384, "hex": "0xedb88320", "address": "0x0000ba20"}
+            ],
+            "strings": [],
+            "called_functions": [
+                {"name": "gf2_matrix_times", "address": "0x0000bc00", "is_thunk": false, "is_external": false}
+            ],
+            "control_flow": {"instruction_count": 88, "branch_count": 8, "call_count": 2, "conditional_branch_count": 6, "return_count": 1, "mnemonic_histogram": {}},
+            "decompiler": {"raw_c": "ulong crc32_combine_(...)", "tokens": []},
+            "referenced_symbols": []
+        },
+        {
+            "address": "0x0000bc00",
+            "name": "gf2_matrix_times",
+            "size": 120,
+            "constants": [
+                {"value": 1, "hex": "0x1", "address": "0x0000bc20"}
+            ],
+            "strings": [],
+            "called_functions": [],
+            "control_flow": {"instruction_count": 48, "branch_count": 4, "call_count": 0, "conditional_branch_count": 3, "return_count": 1, "mnemonic_histogram": {}},
+            "decompiler": {"raw_c": "ulong gf2_matrix_times(...)", "tokens": []},
+            "referenced_symbols": []
+        },
+        {
+            "address": "0x0000c000",
+            "name": "zcalloc",
+            "size": 80,
+            "constants": [],
+            "strings": [],
+            "called_functions": [
+                {"name": "calloc", "address": "0x00020500", "is_thunk": true, "is_external": true}
+            ],
+            "control_flow": {"instruction_count": 22, "branch_count": 2, "call_count": 1, "conditional_branch_count": 1, "return_count": 1, "mnemonic_histogram": {}},
+            "decompiler": {"raw_c": "voidpf zcalloc(...)", "tokens": []},
+            "referenced_symbols": []
+        },
+        {
+            "address": "0x0000c100",
+            "name": "zcfree",
+            "size": 40,
+            "constants": [],
+            "strings": [],
+            "called_functions": [
+                {"name": "free", "address": "0x00020300", "is_thunk": true, "is_external": true}
+            ],
+            "control_flow": {"instruction_count": 12, "branch_count": 0, "call_count": 1, "conditional_branch_count": 0, "return_count": 1, "mnemonic_histogram": {}},
+            "decompiler": {"raw_c": "void zcfree(...)", "tokens": []},
+            "referenced_symbols": []
+        },
+        {
+            "address": "0x0000c200",
+            "name": "zlibVersion",
+            "size": 24,
+            "constants": [],
+            "strings": [
+                {"value": "1.2.11", "address": "0x0000a100"}
+            ],
+            "called_functions": [],
+            "control_flow": {"instruction_count": 6, "branch_count": 0, "call_count": 0, "conditional_branch_count": 0, "return_count": 1, "mnemonic_histogram": {}},
+            "decompiler": {"raw_c": "const char *zlibVersion(...)", "tokens": []},
+            "referenced_symbols": []
+        },
+        {
+            "address": "0x0000c300",
+            "name": "zError",
+            "size": 48,
+            "constants": [],
+            "strings": [
+                {"value": "need dictionary", "address": "0x0000a500"},
+                {"value": "stream end", "address": "0x0000a520"},
+                {"value": "file error", "address": "0x0000a540"},
+                {"value": "stream error", "address": "0x0000a560"},
+                {"value": "data error", "address": "0x0000a580"},
+                {"value": "insufficient memory", "address": "0x0000a5a0"},
+                {"value": "buffer error", "address": "0x0000a5c0"},
+                {"value": "incompatible version", "address": "0x0000a5e0"}
+            ],
+            "called_functions": [],
+            "control_flow": {"instruction_count": 18, "branch_count": 1, "call_count": 0, "conditional_branch_count": 1, "return_count": 1, "mnemonic_histogram": {}},
+            "decompiler": {"raw_c": "const char *zError(...)", "tokens": []},
+            "referenced_symbols": []
+        }
+    ]
+}

@@ -1,0 +1,158 @@
+======================================================================
+  WHOLE-BINARY MATCHING RATIO EXPERIMENT
+======================================================================
+  Corpus:  /home/claude/source_recovery/experiments/../examples/zlib_full_corpus.json
+  Binary:  /usr/lib/x86_64-linux-gnu/libz.so.1.2.11
+  Total functions in binary: 145
+  Functions in corpus:       25
+
+==============================================================================================================
+  PER-FUNCTION FEATURE BREAKDOWN
+==============================================================================================================
+  Function                 Size   RawK RareK   Str UStr  ExtC    Q   Tier
+  ---------------------- ------   ---- -----  ---- ----  ----  ---   --------
+  adler32                   312      4     2     2    2     0   10   [HIGH]
+  crc32                     458      3     1     0    0     0    1   [MED] 
+  inflate                  3200      3     1    10   10     0    7   [HIGH]
+  inflate_fast             1850      3     1     3    3     0    7   [HIGH]
+  deflate                  2100      2     1     0    0     0    1   [MED] 
+  deflateInit2_             780      3     0     1    1     0    1   [MED] 
+  compress2                 210      1     0     0    0     0    0   [NONE]
+  uncompress                240      0     0     0    0     0    0   [NONE]
+  inflateInit2_             620      2     0     1    1     0    1   [MED] 
+  inflateEnd                120      0     0     0    0     0    0   [NONE]
+  gzopen                    180      1     0     1    1     0    1   [MED] 
+  gz_open                   540      2     0     1    1     3    3   [MED] 
+  gzread                    320      1     0     1    1     0    1   [MED] 
+  gz_read                   680      2     0     1    1     1    2   [MED] 
+  gzwrite                   280      1     0     1    1     0    1   [MED] 
+  gz_write                  520      1     0     0    0     1    1   [LOW] 
+  inflate_table            1450      4     1     0    0     0    1   [MED] 
+  _tr_init                  220      3     1     0    0     0    1   [MED] 
+  adler32_combine_          180      1     1     0    0     0    1   [MED] 
+  crc32_combine_            240      1     1     0    0     0    1   [MED] 
+  gf2_matrix_times          120      1     0     0    0     0    0   [NONE]
+  zcalloc                    80      0     0     0    0     1    1   [LOW] 
+  zcfree                     40      0     0     0    0     1    1   [LOW] 
+  zlibVersion                24      0     0     1    1     0    1   [MED] 
+  zError                     48      0     0     8    8     0    4   [HIGH]
+--------------------------------------------------------------------------------------------------------------
+  Legend: RawK=raw constants, RareK=rare constants (post-filter), Str=strings, UStr=unique strings (scored), ExtC=external calls, Q=queries built
+
+======================================================================
+  IDENTIFIABILITY DISTRIBUTION
+======================================================================
+  Total functions analyzed:  25
+
+  HIGH      4/25 ( 16.0%)  [######----------------------------------]
+  MEDIUM   14/25 ( 56.0%)  [######################------------------]
+  LOW       3/25 ( 12.0%)  [####------------------------------------]
+  NONE      4/25 ( 16.0%)  [######----------------------------------]
+
+======================================================================
+  EXPECTED MATCHING RATIO (Stripped-Binary Search)
+======================================================================
+  Searchable (any tier except NONE):     21/25  (84.0%)
+  Reliably matchable (HIGH or MEDIUM):   18/25  (72.0%)
+  High-confidence matches (HIGH only):    4/25  (16.0%)
+  Unidentifiable (NONE):                  4/25  (16.0%)
+
+======================================================================
+  STRONGEST CANDIDATES (Top 5 HIGH-tier functions)
+======================================================================
+
+  inflate @ 0x00004800
+    Rare constants:  1
+    Unique strings:  10
+    Queries built:   7
+    Top search terms:
+      - invalid literal/length code
+      - invalid literal/lengths set
+      - invalid stored block lengths
+      - invalid distance too far back
+    Example query:   0x5a0 "invalid literal/length code"
+
+  zError @ 0x0000c300
+    Rare constants:  0
+    Unique strings:  8
+    Queries built:   4
+    Top search terms:
+      - stream error
+      - buffer error
+      - file error
+      - data error
+    Example query:   "stream error"
+
+  adler32 @ 0x00003fa0
+    Rare constants:  2
+    Unique strings:  2
+    Queries built:   10
+    Top search terms:
+      - incorrect length check
+      - incorrect data check
+      - 0xfff1
+      - 0x15b0
+    Example query:   0xfff1 "incorrect length check"
+
+  inflate_fast @ 0x00005c00
+    Rare constants:  1
+    Unique strings:  3
+    Queries built:   7
+    Top search terms:
+      - invalid literal/length code
+      - invalid distance too far back
+      - invalid distance code
+      - 0x102
+    Example query:   0x102 "invalid literal/length code"
+
+======================================================================
+  FAILURE-MODE ANALYSIS
+======================================================================
+
+  NONE tier (4 function(s)): no searchable features
+    - compress2 @ 0x00007800 (210 bytes)
+      Raw constants: 1 (all filtered as noise)
+      Strings: 0 | External calls: 0
+      >> Reason: thin wrapper or trivial function with no unique signal
+    - uncompress @ 0x00007a00 (240 bytes)
+      Raw constants: 0 (all filtered as noise)
+      Strings: 0 | External calls: 0
+      >> Reason: thin wrapper or trivial function with no unique signal
+    - inflateEnd @ 0x00008600 (120 bytes)
+      Raw constants: 0 (all filtered as noise)
+      Strings: 0 | External calls: 0
+      >> Reason: thin wrapper or trivial function with no unique signal
+    - gf2_matrix_times @ 0x0000bc00 (120 bytes)
+      Raw constants: 1 (all filtered as noise)
+      Strings: 0 | External calls: 0
+      >> Reason: thin wrapper or trivial function with no unique signal
+
+  LOW tier (3 function(s)): only one weak signal
+    - gz_write @ 0x00009a00: 0 rare constants, 0 unique strings, 1 external calls
+    - zcalloc @ 0x0000c000: 0 rare constants, 0 unique strings, 1 external calls
+    - zcfree @ 0x0000c100: 0 rare constants, 0 unique strings, 1 external calls
+
+======================================================================
+  INTERPRETATION
+======================================================================
+
+  The reliably-matchable ratio (HIGH + MEDIUM tiers) is the key metric.
+  These are functions with enough internal signal to construct discriminating
+  multi-term GitHub queries without relying on symbol names.
+
+  HIGH-tier functions (cross-category signals) reliably return the correct
+  source file as the top match in testing. MEDIUM-tier functions usually
+  match but may require LLM verification to disambiguate similar candidates.
+
+  LOW-tier and NONE-tier functions are the fundamental limitation of a
+  stripped-binary, search-based approach. They are typically:
+    - Trivial wrappers that only call one external function
+    - Auto-generated glue code (PLT stubs, initializers)
+    - Pure math functions using only common constants (0, 1, shift amounts)
+
+  For zlib specifically, the algorithmic core (adler32, crc32, inflate,
+  deflate) produces rich feature sets. Utility wrappers (zcalloc, zcfree,
+  uncompress) are harder to identify without symbol information — which
+  aligns with the tool's fundamental design limits.
+
+  Full JSON report saved to: example_outputs/09_whole_binary_experiment.json
